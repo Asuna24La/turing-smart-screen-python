@@ -756,13 +756,18 @@ class Date:
             value=f"{babel.dates.format_date(date_now, format=date_format, locale=lc_time)}"
         )
 
-        hour_theme_data = date_theme_data['HOUR']['TEXT']
+        hour_theme_data = date_theme_data['HOURH']['TEXT']
         time_format = hour_theme_data.get("FORMAT", 'medium')
         display_themed_value(
             theme_data=hour_theme_data,
-            value=f"{babel.dates.format_time(date_now, format=time_format, locale=lc_time)}"
+            value=f"{babel.dates.format_time(date_now, format='HH', locale=lc_time)}"
         )
 
+        minute_theme_data = date_theme_data['HOURM']['TEXT']
+        display_themed_value(
+            theme_data =minute_theme_data,
+            value=f"{babel.dates.format_time(date_now, format='mm', locale=lc_time)}"
+        )
 
 class SystemUptime:
     @staticmethod
